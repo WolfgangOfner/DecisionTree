@@ -48,8 +48,7 @@ namespace DecisionTree
                     }
                 }
 
-                var differentValuesOfLastColumn =
-                    MyAttribute.GetDifferentAttributeNamesOfColumn(data, data.Columns.Count - 1);
+                var differentValuesOfLastColumn = MyAttribute.GetDifferentAttributeNamesOfColumn(data, data.Columns.Count - 1);
 
                 if (differentValuesOfLastColumn.Count > 2)
                 {

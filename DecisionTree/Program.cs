@@ -41,8 +41,7 @@ namespace DecisionTree
 
                         if (data == null)
                         {
-                            DisplayErrorMessage(
-                                "An error occured while importing the data from the .csv file. Press any key to close the program.");
+                            DisplayErrorMessage("An error occured while importing the data from the .csv file. Press any key to close the program.");
                             Console.ReadKey();
                             EndProgram();
                         }
@@ -89,8 +88,7 @@ namespace DecisionTree
                                     }
                                     else
                                     {
-                                        DisplayErrorMessage(
-                                            "Wrong input. Amount of columns must be an integer greater than 1");
+                                        DisplayErrorMessage("Wrong input. Amount of columns must be an integer greater than 1");
                                     }
 
                                     break;
@@ -116,8 +114,7 @@ namespace DecisionTree
 
                                     var endOfDirectoryPath = input.LastIndexOf("\\");
 
-                                    if (endOfDirectoryPath > 0 &&
-                                        Directory.Exists(input.Substring(0, endOfDirectoryPath)))
+                                    if (endOfDirectoryPath > 0 && Directory.Exists(input.Substring(0, endOfDirectoryPath)))
                                     {
                                         try
                                         {
@@ -125,8 +122,7 @@ namespace DecisionTree
                                         }
                                         catch (Exception ex)
                                         {
-                                            DisplayErrorMessage(
-                                                $"An error during the export occured. Error message: {ex.Message}");
+                                            DisplayErrorMessage($"An error during the export occured. Error message: {ex.Message}");
                                         }
                                     }
                                     else
@@ -179,8 +175,7 @@ namespace DecisionTree
                 for (var i = 0; i < data.Columns.Count - 1; i++)
                 {
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine(
-                        $"\nEnter your value for {data.Columns[i]} or help for a list of the additional instructions");
+                    Console.WriteLine($"\nEnter your value for {data.Columns[i]} or help for a list of the additional instructions");
                     Console.ResetColor();
                     var input = ReadLineTrimmed();
 
@@ -192,8 +187,7 @@ namespace DecisionTree
                     {
                         Console.WriteLine();
                         Tree.Print(decisionTree.Root, decisionTree.Root.Name.ToUpper());
-                        Tree.PrintLegend(
-                            "Due to the limitation of the console the tree is displayed as a list of every possible route. The colors indicate the following values:");
+                        Tree.PrintLegend("Due to the limitation of the console the tree is displayed as a list of every possible route. The colors indicate the following values:");
 
                         i--;
                     }
@@ -235,8 +229,7 @@ namespace DecisionTree
                             }
                             catch (Exception ex)
                             {
-                                DisplayErrorMessage(
-                                    $"An error during the export occured. \nError message: {ex.Message}");
+                                DisplayErrorMessage($"An error during the export occured. \nError message: {ex.Message}");
                             }
                         }
                         else
@@ -276,7 +269,6 @@ namespace DecisionTree
                 }
             } while (!returnToMainMenu);
         }
-
 
         private static DataTable EnterRowValues(DataTable data)
         {

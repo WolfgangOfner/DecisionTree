@@ -43,6 +43,7 @@ namespace DecisionTree
                 }
 
                 Console.WriteLine();
+
                 return;
             }
 
@@ -84,12 +85,11 @@ namespace DecisionTree
                 {
                     foreach (var entry in valuesForQuery)
                     {
-                        if (childNode.Edge.ToUpper().Equals(entry.Value.ToUpper()) &&
-                            root.Name.ToUpper().Equals(entry.Key.ToUpper()))
+                        if (childNode.Edge.ToUpper().Equals(entry.Value.ToUpper()) && root.Name.ToUpper().Equals(entry.Key.ToUpper()))
                         {
                             valuesForQuery.Remove(entry.Key);
-                            return result + CalculateResult(childNode, valuesForQuery,
-                                       $"{childNode.Edge.ToLower()} --> ");
+
+                            return result + CalculateResult(childNode, valuesForQuery, $"{childNode.Edge.ToLower()} --> ");
                         }
                     }
                 }
@@ -116,8 +116,7 @@ namespace DecisionTree
                 // make a recursive call as long as the node is not a leaf
                 if (!isLeaf)
                 {
-                    var reducedTable = CreateSmallerTable(data, item,
-                        root.TableIndex);
+                    var reducedTable = CreateSmallerTable(data, item, root.TableIndex);
 
                     root.ChildNodes.Add(Learn(reducedTable, item));
                 }
@@ -214,8 +213,7 @@ namespace DecisionTree
                 }
             }
 
-            return new TreeNode(attributes[highestInformationGainIndex].Name, highestInformationGainIndex,
-                attributes[highestInformationGainIndex], edge);
+            return new TreeNode(attributes[highestInformationGainIndex].Name, highestInformationGainIndex, attributes[highestInformationGainIndex], edge);
         }
 
         private static double GetGainForAllAttributes(DataTable data, int colIndex, double entropyOfDataset)
@@ -237,13 +235,11 @@ namespace DecisionTree
                 }
                 else
                 {
-                    stepsForCalculation.Add(-firstDivision * Math.Log(firstDivision, 2) -
-                                            secondDivision * Math.Log(secondDivision, 2));
+                    stepsForCalculation.Add(-firstDivision * Math.Log(firstDivision, 2) - secondDivision * Math.Log(secondDivision, 2));
                 }
             }
 
-            var gain = stepsForCalculation.Select((t, i) => amountForDifferentValue[i][0, 0] / (double)totalRows * t)
-                .Sum();
+            var gain = stepsForCalculation.Select((t, i) => amountForDifferentValue[i][0, 0] / (double)totalRows * t).Sum();
 
             gain = entropyOfDataset - gain;
 
@@ -280,8 +276,7 @@ namespace DecisionTree
                         amount++;
 
                         // Counts the positive cases and adds the sum later to the array for the calculation
-                        if (data.Rows[i][data.Columns.Count - 1].ToString()
-                            .Equals(data.Rows[0][data.Columns.Count - 1]))
+                        if (data.Rows[i][data.Columns.Count - 1].ToString().Equals(data.Rows[0][data.Columns.Count - 1]))
                         {
                             positiveAmount++;
                         }
